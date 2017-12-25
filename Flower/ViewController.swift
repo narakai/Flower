@@ -31,6 +31,17 @@ class ViewController: UIViewController {
         view.addSubview(textView)
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+//        if !"13677777711123123".isPhoneNumber() {
+//            showErrorMessage(message: "Oho");
+//        }
+        showHudInView(view: view, hint: "Loading", yOffset: 0)
+//        super.viewDidAppear(animated)
+//        let alertController = UIAlertController(title: "花田小憩", message: "消息", preferredStyle: UIAlertControllerStyle.alert)
+//        let action = UIAlertAction(title: "好的", style: UIAlertActionStyle.cancel, handler: nil)
+//        alertController.addAction(action)
+//        self.present(alertController, animated: true, completion: nil)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
