@@ -30,8 +30,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // 根据版本号, 判断显示哪个控制器
         if toNewFeature() {
+            ALinLog(message: "new")
             window?.rootViewController = ViewController()
         } else {
+            ALinLog(message: "old")
             window?.rootViewController = ViewController()
         }
 
