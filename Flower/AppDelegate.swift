@@ -17,14 +17,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let rootVC = ViewController()
-        // 创建窗口
+        // 方便测试: 每次登录的时候, 都把登录状态设置false
+//      LoginHelper.sharedInstance.setLoginStatus(false)
+
+        // 设置全局的UINavigationBar属性
+        let bar = UINavigationBar.appearance()
+        bar.tintColor = UIColor.orange
+        bar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.orange, NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 15)];
+
+        // 设置window
         window = UIWindow(frame: LLRect)
-        // 设置窗口的根控制器
-        window?.rootViewController = rootVC
+
+        // 根据版本号, 判断显示哪个控制器
+        if toNewFeature() {
+            window?.rootViewController = ViewController()
+        } else {
+            window?.rootViewController = ViewController()
+        }
+
         // 显示窗口
         window?.makeKeyAndVisible()
         return true
+    }
+
+    private let SLBundleShortVersionString = "SLBundleShortVersionString"
+
+    // MARK: - 判断版本号
+    private func toNewFeature() -> Bool {
+        // 根据版本号来确定是否进入新特性界面
+        let currentVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
+        let oldVersion = UserDefaults.standard.object(forKey: SLBundleShortVersionString) ?? ""
+
+        // 如果当前的版本号和本地保存的版本比较是降序, 则需要显示新特性
+        if (currentVersion.compare(oldVersion as! String)) == .orderedDescending {
+            // 保存当前的版本
+            UserDefaults.standard.set(currentVersion, forKey: SLBundleShortVersionString)
+            return true
+        }
+        return false
     }
 
 
