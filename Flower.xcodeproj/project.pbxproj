@@ -15,7 +15,6 @@
 		FCA15833DB04AEEF0A85B4BB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA15DDB85E32B3ACCE7EA4B /* ViewController.swift */; };
 		FCA158F84D7014FDBE8BAAA6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCA158CF5C27FB1FE3D6E562 /* LaunchScreen.storyboard */; };
 		FCA159168BB46C9DC7F97352 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA15D46D068AA943F0E2AF5 /* UIColor+Extension.swift */; };
-		FCA159CC4045A2EAFCB3006E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCA15BAA1F01CE58C1D39205 /* Main.storyboard */; };
 		FCA15BBB41FE989B0D866CAD /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA15A3A5A60B8AB080DE5BD /* UIImage+Extension.swift */; };
 		FCA15C25116D2DF022E924EE /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA15EB17D2A6670FE8609DA /* UITextField+Extension.swift */; };
 		FCA15C4B85D00A92B198BCB1 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1576029D1E2700D430532 /* UILabel+Extension.swift */; };
@@ -38,7 +37,6 @@
 		FCA15610503588C9D7BAF97A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FCA1576029D1E2700D430532 /* UILabel+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		FCA15A3A5A60B8AB080DE5BD /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
-		FCA15C33E794410D82F6727E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FCA15CEF9B4E52AD47B2E726 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FCA15CF4156003B254867C23 /* NSObject+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
 		FCA15D46D068AA943F0E2AF5 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -106,7 +104,6 @@
 				FCA1544596A7AB6B3575BDF1 /* Assets.xcassets */,
 				FCA158CF5C27FB1FE3D6E562 /* LaunchScreen.storyboard */,
 				FCA15610503588C9D7BAF97A /* AppDelegate.swift */,
-				FCA15BAA1F01CE58C1D39205 /* Main.storyboard */,
 				FCA15DDB85E32B3ACCE7EA4B /* ViewController.swift */,
 				FCA15B5D2B5680A176370A22 /* Classes */,
 			);
@@ -199,7 +196,6 @@
 			files = (
 				FCA15D7B6B4125AF0913066F /* Assets.xcassets in Resources */,
 				FCA158F84D7014FDBE8BAAA6 /* LaunchScreen.storyboard in Resources */,
-				FCA159CC4045A2EAFCB3006E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,14 +291,6 @@
 				FCA15CEF9B4E52AD47B2E726 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		FCA15BAA1F01CE58C1D39205 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FCA15C33E794410D82F6727E /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
