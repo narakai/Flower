@@ -14,7 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         // 方便测试: 每次登录的时候, 都把登录状态设置false
@@ -31,10 +30,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 根据版本号, 判断显示哪个控制器
         if toNewFeature() {
             ALinLog(message: "new")
-            window?.rootViewController = ViewController()
+            window?.rootViewController = MainViewController()
         } else {
             ALinLog(message: "old")
-            window?.rootViewController = ViewController()
+            window?.rootViewController = MainViewController()
         }
 
         // 显示窗口
