@@ -15,7 +15,7 @@ class NavigationViewController: UINavigationController {
             // push的时候, 隐藏tabbar
             viewController.hidesBottomBarWhenPushed = true
             // 添加返回按钮
-            viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "back"), style: .done, target: self, action: #selector(NavigationViewController.back))
+            viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "back"), style: .done, target: self, action: #selector(back))
         }
         super.pushViewController(viewController, animated: animated)
     }

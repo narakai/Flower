@@ -13,6 +13,20 @@ import Alamofire
 private let HomeArticleReuseIdentifier = "HomeArticleReuseIdentifier"
 
 class HomeTableViewController: UITableViewController {
+    // MARK: - 懒加载
+    let menuBtn: UIButton = {
+        let btn = UIButton()
+        btn.setImage(UIImage(named: "menu"), for: .normal)
+        btn.frame.size = CGSize(width: 20, height: 20)
+        btn.addTarget(self, action: #selector(selectedCategory), for: .touchUpInside)
+        return btn
+    }()
+
+    let titleBtn: TitleBtn = {
+        let btn = TitleBtn()
+        return btn
+    }()
+
 
     // MARK: - 参数/变量
     // 文章数组
@@ -26,12 +40,62 @@ class HomeTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setup()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+
+    // MARK: - 基本设置
+    // 设置导航栏和tableview相关
+    private func setup() {
+        // 设置左右item
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: menuBtn)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "TOP", style: .plain, target: self, action: #selector(toTop))
+
+        // 设置titleView
+        navigationItem.titleView = titleBtn
+
+        // 设置tableview相关
+        tableView.register(HomeTableViewController.self, forCellReuseIdentifier: HomeArticleReuseIdentifier)
+        tableView.rowHeight = 330;
+        tableView.separatorStyle = .none
+        tableView.tableFooterView = UIView()
+
+        // 设置下拉刷新控件
+        refreshControl = RefreshControl(frame: CGRect.zero)
+        refreshControl?.addTarget(self, action: #selector(getList), for: .valueChanged)
+        refreshControl?.beginRefreshing()
+        getList()
+        getCategories()
+    }
+
+    @objc private func getCategories() {
+
+    }
+
+    // MARK: 数据获取
+
+    /**
+     #1.获得专题的类型:(POST或者GET都行)
+     http://m.htxq.net/servlet/SysCategoryServlet?action=getList
+     */
+    @objc private func getList() {
+
+    }
+
+    /*******  START *********/
+    // OC中的方法都是运行时加载, 是属于动态的, 用的时候才加载
+    // SWift中的方法都是编译时加载, 属于静态的.
+    // 如果使用addTarget, 且是private修饰的, 就需要告诉编辑器, 我这个方法是objc的, 属于动态加载
+    @objc private func toTop() {
+//        navigationController?.pushViewController(TopViewController(), animated: true)
+    }
+
+    @objc private func selectedCategory() {
+
     }
 
     override func didReceiveMemoryWarning() {
