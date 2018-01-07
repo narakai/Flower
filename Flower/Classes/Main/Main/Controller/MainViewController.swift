@@ -28,7 +28,39 @@ class MainViewController: UITabBarController {
         view.backgroundColor = UIColor.white
         // 设置tabBar的tintColor
         tabBar.tintColor = UIColor.black
+        // 一个简单的本地化...
+//        addViewController(HomeTableViewController(), title: NSLocalizedString("tab_theme", comment: ""))
 
+        // 设置UITabBarControllerDelegate
+        delegate = self
+
+        // 添加通知监听
+        NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.logout), name: NSNotification.Name.init(LoginOutNotify), object: nil)
+    }
+
+    // 监听到退出登录
+    @objc func logout() {
+        // 1. 选中首页
+        selectedIndex = 0
+        // 2. 弹出登录界面
+        login()
+    }
+
+    // MARK: - private method
+    /// 跳转到登录界面
+    private func login() {
+
+    }
+
+    // 添加子控件
+    private func addViewController(childController: UIViewController, title: String) {
+        let nav = NavigationViewController(rootViewController: childController)
+        addChildViewController(nav)
+        childController.tabBarItem.title = title
+        childController.tabBarItem.image = UIImage(named: "tb_\(childViewControllers.count - 1)")
+        childController.tabBarItem.selectedImage = UIImage(named: "tb_\(childViewControllers.count - 1)" + "_selected")
+        // 设置tabBarItem的tag, 方便判断点击
+        childController.tabBarItem.tag = childViewControllers.count - 1
     }
 
     override func didReceiveMemoryWarning() {

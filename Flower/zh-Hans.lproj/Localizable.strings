@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  Flower
+
+  Created by lai leon on 2017/12/31.
+  Copyright © 2017年 clem. All rights reserved.
+*/
+"tab_theme" = "专题";
+"tab_malls" = "商城";
+"tab_profile" = "我的";
