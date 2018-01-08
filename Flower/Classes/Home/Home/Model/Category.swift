@@ -18,6 +18,9 @@ class Category: NSObject {
     // 专题序号
     var order: Int?
 
+    var img: String?
+    var name: String?
+
     // 遍历构造器
     init(dict: [String: AnyObject]) {
         super.init()
