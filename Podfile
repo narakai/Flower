@@ -11,6 +11,6 @@ target 'Flower' do
   pod 'Kingfisher', '~> 4.0' ## 轻量级的SDWebImage
   pod 'MBProgressHUD'
   pod 'MJRefresh'
-  pod 'HandyJSON', '~> 1.8.0'
+  pod 'SwiftyJSON'
 
 end

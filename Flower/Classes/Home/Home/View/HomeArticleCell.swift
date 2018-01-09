@@ -15,8 +15,8 @@ class HomeArticleCell: UITableViewCell {
         didSet {
             if let art = article {
                 // 设置数据
-//                smallIconView.kf.(NSURL(string: art.smallIcon!)!, placeholderImage: UIImage(named: "placehodler"), optionsInfo: [], progressBlock: nil, completionHandler: nil)
-//                headImgView.kf_setImageWithURL(NSURL(string: art.author!.headImg!)!, placeholderImage: UIImage(named: "pc_default_avatar"), optionsInfo: [], progressBlock: nil, completionHandler: nil)
+                smallIconView.kf.setImage(with: URL(string: art.smallIcon!), placeholder: UIImage(named: "placehodler"), options: [], progressBlock: nil, completionHandler: nil)
+                headImgView.kf.setImage(with: URL(string: art.author!.headImg!), placeholder: UIImage(named: "pc_default_avatar"), options: [], progressBlock: nil, completionHandler: nil)
                 identityLabel.text = art.author!.identity!
                 authorLabel.text = art.author!.userName ?? "佚名"
                 categoryLabel.text = "[" + art.category!.name! + "]"

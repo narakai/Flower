@@ -77,9 +77,9 @@ class HomeTableViewController: UITableViewController {
 
     @objc private func getCategories() {
 // 1. 获取本地保存的
-        if let array = Category.loadLocalCategories() {
-            self.categories = array
-        }
+//        if let array = Category.loadLocalCategories() {
+//            self.categories = array
+//        }
         // 2. 获取网络数据
         NetworkTool.sharedTools.getCategories { (categories, error) in
             if error == nil {

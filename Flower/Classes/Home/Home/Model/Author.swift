@@ -58,6 +58,6 @@ class Author: NSObject {
 
     init(dict: [String: AnyObject]) {
         super.init()
-        setValuesForKeys(dict)
+//        setValuesForKeys(dict)
     }
 }

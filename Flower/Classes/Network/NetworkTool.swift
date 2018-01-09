@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SwiftyJSON
 
 // 每周Top10的action的枚举
 enum TOP10Action: String {
@@ -47,12 +48,10 @@ class NetworkTool: Alamofire.SessionManager {
      - parameter finished: 返回的block闭包
      */
     func getCategories(finished: @escaping (_ categories: [Category]?, _ error: Error?) -> ()) {
-        request("http://api.htxq.net/servlet/SysCategoryServlet?action=getList", method: HTTPMethod.get, parameters: nil, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
+        request("http://api.htxq.net/servlet/SysCategoryServlet?action=getList", method: HTTPMethod.get, parameters: nil, encoding: URLEncoding.default, headers: headers).responseJSON { (response) in
+            //            ALinLog(message: response.result.value)
             if response.result.isSuccess {
-//                if let json = response.result.value {
-//                    print("JSON: \(json)") // serialized json response
-//                }
-                if let dictValue = response.result.value as?  [String:AnyObject] {
+                if let dictValue = response.result.value as? [String: AnyObject] {
                     if let resultValue = dictValue["result"] as? [[String: AnyObject]] {
                         var categories = [Category]()
                         for dict in resultValue as! [[String: AnyObject]] {
@@ -60,7 +59,7 @@ class NetworkTool: Alamofire.SessionManager {
                         }
                         finished(categories, nil)
                         // 保存在本地
-                        Category.savaCategories(categories: categories)
+//                        Category.savaCategories(categories: categories)
                     } else {
                         finished(nil, NSError.init(domain: "数据异常", code: 44, userInfo: nil))
                     }
@@ -84,8 +83,8 @@ class NetworkTool: Alamofire.SessionManager {
      - parameter finished:  回传的闭包
      */
     func getHomeList(paramters: [String: Any]?, finished: @escaping (_ articles: [Article]?, _ error: Error?, _ loadAll: Bool) -> ()) {
-        request("http://api.htxq.net/servlet/SysArticleServlet?action=mainList", method: HTTPMethod.post, parameters: paramters, encoding: JSONEncoding.default, headers: headers).responseJSON(queue: DispatchQueue.main, options: .mutableContainers) { (response) in
-            ALinLog(message: response.result.value)
+        request("http://api.htxq.net/servlet/SysArticleServlet?action=mainList", method: HTTPMethod.post, parameters: paramters, encoding: URLEncoding.queryString, headers: headers).responseJSON(queue: DispatchQueue.main, options: .mutableContainers) { (response) in
+//            ALinLog(message: response.result.value)
             if response.result.isSuccess {
                 if let value = response.result.value as? NSDictionary {
                     if (value["msg"] as! NSString).isEqual(to: "已经到最后") {

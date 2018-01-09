@@ -59,26 +59,25 @@ class Article: NSObject {
     // 所属分类
     var category: Category?
 
-
     init(dict: [String: AnyObject]) {
         super.init()
-        setValuesForKeys(dict)
+//        setValuesForKeys(dict)
     }
 
-    override func setValue(_ value: Any?, forKey key: String) {
-        // 单独处理author和category
-        if key == "author" {
-            if let valueOfKey = value {
-                author = Author(dict: valueOfKey as! [String: AnyObject])
-            }
-            return;
-        }
-        if key == "category" {
-            if let valueOfKey = value {
-                category = Category(dict: valueOfKey as! [String: AnyObject])
-            }
-            return
-        }
-        super.setValue(value, forKey: key)
-    }
+//    override func setValue(_ value: Any?, forKey key: String) {
+//        // 单独处理author和category
+//        if key == "author" {
+//            if let valueOfKey = value {
+//                author = Author(dict: valueOfKey as! [String: AnyObject])
+//            }
+//            return;
+//        }
+//        if key == "category" {
+//            if let valueOfKey = value {
+//                category = Category(dict: valueOfKey as! [String: AnyObject])
+//            }
+//            return
+//        }
+//        super.setValue(value, forKey: key)
+//    }
 }
