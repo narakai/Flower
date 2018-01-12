@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class Author: NSObject {
     // 认证类型: 专家
@@ -32,7 +33,7 @@ class Author: NSObject {
     // 用户名
     var userName: String?
     // 手机号
-    var mobile: Int64 = 18618234090
+    var mobile: Int = 18618234090
     // 订阅数
     var subscibeNum: Int = 0
     // 认证的等级, 1是yellow, 2是个人认证
@@ -56,8 +57,26 @@ class Author: NSObject {
     // 积分
     var integral: Int = 0
 
-    init(dict: [String: AnyObject]) {
+//    init(dict: [String: AnyObject]) {
+//        super.init()
+////        setValuesForKeys(dict)
+//    }
+
+    init(jsonData: JSON) {
+        auth = jsonData["auth"].stringValue
+        city = jsonData["city"].stringValue
+        content = jsonData["content"].stringValue
+        headImg = jsonData["headImg"].stringValue
+        id = jsonData["id"].stringValue
+        identity = jsonData["identity"].stringValue
+        userName = jsonData["userName"].stringValue
+        dingYue = jsonData["dingYue"].intValue
+        mobile = jsonData["mobile"].intValue
+        subscibeNum = jsonData["subscibeNum"].intValue
+        newAuth = jsonData["newAuth"].intValue
+        experience = jsonData["experience"].intValue
+        level = jsonData["level"].intValue
+        integral = jsonData["integral"].intValue
         super.init()
-//        setValuesForKeys(dict)
     }
 }

@@ -49,17 +49,16 @@ class NetworkTool: Alamofire.SessionManager {
      */
     func getCategories(finished: @escaping (_ categories: [Category]?, _ error: Error?) -> ()) {
         request("http://api.htxq.net/servlet/SysCategoryServlet?action=getList", method: HTTPMethod.get, parameters: nil, encoding: URLEncoding.default, headers: headers).responseJSON { (response) in
-            //            ALinLog(message: response.result.value)
+//            ALinLog(message: response.result.value)
             if response.result.isSuccess {
-                if let dictValue = response.result.value as? [String: AnyObject] {
-                    if let resultValue = dictValue["result"] as? [[String: AnyObject]] {
+                if let value = response.result.value {
+                    if let swiftyJsonVar = JSON(value).dictionaryValue["result"] {
                         var categories = [Category]()
-                        for dict in resultValue as! [[String: AnyObject]] {
-                            categories.append(Category(dict: dict))
+                        for (index, subJson): (String, JSON) in swiftyJsonVar {
+                            let cate = Category(jsonData: subJson)
+                            categories.append(cate)
                         }
                         finished(categories, nil)
-                        // 保存在本地
-//                        Category.savaCategories(categories: categories)
                     } else {
                         finished(nil, NSError.init(domain: "数据异常", code: 44, userInfo: nil))
                     }
@@ -72,35 +71,38 @@ class NetworkTool: Alamofire.SessionManager {
         }
     }
 
-    /**
-     获取首页的文章列表
+/**
+ 获取首页的文章列表
 
-     - parameter paramters: 参数字典
-        - 必传:currentPageIndex,pageSize(当currentPageIndex=0时,该参数无效, 但是必须传)
-        - 根据情景传:
-            - isVideo	true (是否是获取视频列表)
-            - cateId	a56aa5d0-aa6b-42b7-967d-59b77771e6eb(专题的类型, 不传的话是默认)
-     - parameter finished:  回传的闭包
-     */
+ - parameter paramters: 参数字典
+    - 必传:currentPageIndex,pageSize(当currentPageIndex=0时,该参数无效, 但是必须传)
+    - 根据情景传:
+        - isVideo	true (是否是获取视频列表)
+        - cateId	a56aa5d0-aa6b-42b7-967d-59b77771e6eb(专题的类型, 不传的话是默认)
+ - parameter finished:  回传的闭包
+ */
     func getHomeList(paramters: [String: Any]?, finished: @escaping (_ articles: [Article]?, _ error: Error?, _ loadAll: Bool) -> ()) {
         request("http://api.htxq.net/servlet/SysArticleServlet?action=mainList", method: HTTPMethod.post, parameters: paramters, encoding: URLEncoding.queryString, headers: headers).responseJSON(queue: DispatchQueue.main, options: .mutableContainers) { (response) in
 //            ALinLog(message: response.result.value)
             if response.result.isSuccess {
-                if let value = response.result.value as? NSDictionary {
-                    if (value["msg"] as! NSString).isEqual(to: "已经到最后") {
+                if let value = response.result.value {
+                    if ((JSON(value)["msg"].string as! NSString).isEqual(to: "已经到最后")) {
                         finished(nil, response.result.error, true)
-                    } else if let result = value["result"] {
+                    } else if let swiftyJsonVar = JSON(value).dictionaryValue["result"] {
                         var arcicles = [Article]()
-                        for dict in result as! [[String: AnyObject]] {
-                            arcicles.append(Article(dict: dict))
+                        for (index, subJson): (String, JSON) in swiftyJsonVar {
+                            let article = Article(jsonData: subJson)
+                            arcicles.append(article)
                         }
                         finished(arcicles, nil, false)
-
                     }
+                } else {
+                    finished(nil, NSError.init(domain: "服务器异常", code: 44, userInfo: nil), false)
                 }
             } else {
                 finished(nil, response.result.error, false)
             }
         }
     }
+
 }

@@ -7,6 +7,7 @@
 //  首页的专题分类
 
 import UIKit
+import SwiftyJSON
 
 class Category: NSObject {
     // 专题创建时间
@@ -20,11 +21,21 @@ class Category: NSObject {
 
     var img: String?
 
-    // 遍历构造器
-    init(dict: [String: AnyObject]) {
+//    // 遍历构造器
+//    init(dict: [String: AnyObject]) {
+//        super.init()
+////        setValuesForKeys(dict)
+//    }
+
+    init(jsonData: JSON) {
+        createDate = jsonData["createDate"].stringValue
+        id = jsonData["id"].stringValue
+        name = jsonData["name"].stringValue
+        order = jsonData["order"].intValue
+        img = jsonData["img"].stringValue
         super.init()
-//        setValuesForKeys(dict)
     }
+
 //
 //    // MARK: - 序列化和反序列化
 //    private let createDate_Key = "createDate"
