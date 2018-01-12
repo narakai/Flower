@@ -58,17 +58,20 @@ class HomeArticleCell: UITableViewCell {
 //        contentView.addSubview(bottomView)
 
         contentView.snp.makeConstraints { (make) in
-            make.edges.equalTo(UIEdgeInsetsMake(8, 8, 0, -8))
+            make.edges.equalTo(UIEdgeInsetsMake(8, 8, 0, 8))
         }
 
+        //大图
         smallIconView.snp.makeConstraints { (make) in
             make.left.right.top.equalTo(contentView)
             make.height.equalTo(160)
         }
 
+        //头像
         headImgView.snp.makeConstraints { (make) in
             make.size.equalTo(CGSize(width: 51, height: 51))
             make.right.equalTo(contentView).offset(-10)
+//            make.right.equalTo(contentView.snp.right).offset(-10) 一样的效果
             make.top.equalTo(smallIconView.snp.bottom).offset(-10)
         }
 
