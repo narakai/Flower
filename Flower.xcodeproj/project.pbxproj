@@ -23,6 +23,7 @@
 		FCA1527BCFB03AE30F7FC16E /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA155669150E4CD33F2129A /* String+Extension.swift */; };
 		FCA1530A7F792DE31B299DEB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA15D9C2EA7EC9AC97B2801 /* MainViewController.swift */; };
 		FCA1554494A81909B7B2381C /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA15DB76D7D1EC0F37E9242 /* Author.swift */; };
+		FCA1555239F311FFD1CBD648 /* MallsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1558416FDE4E284285608 /* MallsTableViewController.swift */; };
 		FCA155B45090436F2173DF70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA15610503588C9D7BAF97A /* AppDelegate.swift */; };
 		FCA1578031E460898F18C5F4 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA15CC97608A09AF3C37AC0 /* HomeTableViewController.swift */; };
 		FCA1579D1029B9F48FE94BCC /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA15D31983FB3379D6C0C06 /* NavigationViewController.swift */; };
@@ -68,6 +69,7 @@
 		FCA154E9EBC4EEAB51B418B1 /* UIViewController+HUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+HUD.swift"; sourceTree = "<group>"; };
 		FCA154FEFF37F1190D5F7AB2 /* HomeArticleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeArticleCell.swift; sourceTree = "<group>"; };
 		FCA155669150E4CD33F2129A /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		FCA1558416FDE4E284285608 /* MallsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MallsTableViewController.swift; sourceTree = "<group>"; };
 		FCA15595E0656BDF7448D31D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		FCA15610503588C9D7BAF97A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FCA1567968F018ACE6C0577A /* TitleBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleBtn.swift; sourceTree = "<group>"; };
@@ -271,6 +273,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		FCA159B228519092EB66F705 /* Malls */ = {
+			isa = PBXGroup;
+			children = (
+				FCA15AED1DD2DAC3B5F82B32 /* Controller */,
+			);
+			path = Malls;
+			sourceTree = "<group>";
+		};
 		FCA159B27D7AB3427D3B88C2 /* font */ = {
 			isa = PBXGroup;
 			children = (
@@ -308,6 +318,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		FCA15AED1DD2DAC3B5F82B32 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FCA1558416FDE4E284285608 /* MallsTableViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		FCA15B5D2B5680A176370A22 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -317,6 +335,7 @@
 				FCA15051FEFB9FC4EE51ED9E /* Profile */,
 				FCA155C832ECEA2601CC5204 /* Home */,
 				FCA1547E85586A9CEE76AC5F /* Network */,
+				FCA159B228519092EB66F705 /* Malls */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -545,6 +564,7 @@
 				FCA15FB2C92693D9211E2F2A /* RefreshTipView.swift in Sources */,
 				FCA15C09D40996BA3E21F753 /* NetworkTool.swift in Sources */,
 				FCA158FD068ABF81FE2CE264 /* HomeArticleCell.swift in Sources */,
+				FCA1555239F311FFD1CBD648 /* MallsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

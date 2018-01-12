@@ -30,6 +30,7 @@ class MainViewController: UITabBarController {
         tabBar.tintColor = UIColor.black
         // 一个简单的本地化...
         addViewController(childController: HomeTableViewController(), title: NSLocalizedString("tab_theme", comment: ""))
+        addViewController(childController: MallsTableViewController(), title: NSLocalizedString("tab_malls", comment: ""))
 
         // 设置UITabBarControllerDelegate
         delegate = self
