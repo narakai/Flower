@@ -212,6 +212,12 @@ class HomeTableViewController: UITableViewController {
         return cell
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let article = articles![indexPath.row]
+        let detail = DetailViewController()
+        detail.article = article
+        self.navigationController!.pushViewController(detail, animated: true)
+    }
 }
 
 //extension HomeTableViewController: BlurViewDelegate {
