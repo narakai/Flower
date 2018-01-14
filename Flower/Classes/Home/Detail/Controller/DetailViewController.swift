@@ -10,9 +10,9 @@ import UIKit
 import Kingfisher
 
 // 屏幕的宽度
-let ScreenWidth = UIScreen.mainScreen().bounds.width
+let ScreenWidth = UIScreen.main.bounds.width
 // 屏幕的高度
-let ScreenHeight = UIScreen.mainScreen().bounds.height
+let ScreenHeight = UIScreen.main.bounds.height
 
 // 头部Cell的高度
 private let DetailHeadCellHeight: CGFloat = 240
@@ -27,7 +27,7 @@ class DetailViewController: UITableViewController {
     // 浏览器的高
     var WebCellHeight: CGFloat? {
         didSet {
-            tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 1, inSection: 0)], withRowAnimation: .none)
+            tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .none)
         }
     }
 
